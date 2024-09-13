@@ -1,6 +1,10 @@
 # Data Creation
 This folder is used to fetch and create our datasets.
+The datasets are not included in this repo due to their size, contact emb9357@umoncton.ca to access them.
+
 First we need to fetch our data using ArcGis then modify that data to be used for deep learning.
+
+
 
 ## ArcGis Data Fetching
 This guide outlines the steps to prepare training data for deep learning in ArcGIS Pro using a specific workflow. We will transform a line shapefile into a raster, resample it, and export the training data using a combination of hillshade and the rasterized lines. 

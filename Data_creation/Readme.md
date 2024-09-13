@@ -1,8 +1,23 @@
 # Data Creation
 This folder is used to fetch and create our datasets.
-The datasets are not included in this repo due to their size, contact emb9357@umoncton.ca to access them.
-
 First we need to fetch our data using ArcGis then modify that data to be used for deep learning.
+We first present how to create a segmentation dataset, assuming the data was provided in the correct format.
+We also present how to generate the data in cases where the data is unavailable.
+
+## Create Deep Learning Dataset
+This directory is used to create data from the images and images2 dataset created from the next step or directly depending if the data was provided.
+
+`fix_tif_masks.ipynb` is used to trasnform the masks from ArcGis into a usable format. Currently the output uses 0 for background and 2 for road, this code switches it to 0 and 1. This step should be done to any images no matter its origin just as precaution.
+`resize_tifs.ipynb` is used to resize tifs into different sizes and into png format. Not used depending on the fiel size fetched from Arcgis.
+
+`create_dataset_from_tif.ipynb` is used to create a dataset (matching png images and masks) from tif files. Currently, it creates the training and validation set for sizes of 128,256,512 and 1,024 for both augmentation and no augmentation. More information can be found within the code
+Archive `v2.zip` contains our second version of our training data while folders `v3_train` and `v3_val` contain our latest training and validation data before transformation.
+
+The data from `create_dataset_from_tif.ipynb` is excluded from the repo due to the size of the created dataset.
+The output of `create_dataset_from_tif.ipynb` allows users to train segmentation models using deep learning.
+
+
+
 
 
 
@@ -91,26 +106,6 @@ For training purposes, use the images from the `images` folder and the masks fro
 #### Future Work
 
 - Investigate and find a fix for the empty `labels` folder issue to streamline the process.
-
-
-## Create Deep Learning Dataset
-This directory is used to create data from the images and images2 dataset created from the previous step.
-
-
-
-`fix_tif_masks.ipynb` is used to trasnform the masks from ArcGis into a usable format. Currently the output uses 0 for background and 2 for road, this code switches it to 0 and 1.
-
-`resize_tifs.ipynb` is used to resize tifs into different sizes and into png format. Not used depending on the fiel size fetched from Arcgis.
-
-`create_dataset_from_tif.ipynb` is used to create a dataset (matching png images and masks) from tif files. Currently, it creates the training and validation set for sizes of 128,256,512 and 1,024 for both augmentation and no augmentation.
-
-folder `v2` contains our second version of our training data while folders `v3_train` and `v3_val` contain our latest training and validation data.
-
-The data from `create_dataset_from_tif.ipynb` is excluded from the repo due to the size of the created dataset.
-
-
-
-The output of `create_dataset_from_tif.ipynb` should be allow users to train segmentation models using deep learning.
 
 
 
